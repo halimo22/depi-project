@@ -98,7 +98,7 @@
   /* General Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #2378da;
     margin: 0;
     padding: 0;
   }
@@ -113,7 +113,7 @@ body {
   
   /* Enlarged Movie Cards */
   .movie-card {
-    background: white;
+    background: rgb(41, 113, 196);
     padding: 15px;
     border-radius: 8px;
     text-align: center;
@@ -139,7 +139,7 @@ body {
   
   .movie-card p {
     font-size: 16px;
-    color: gray;
+    color: rgb(63, 64, 131);
   }
   
   /* Recommended Movies Section */
