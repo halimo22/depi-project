@@ -1,0 +1,18 @@
+{
+  "name": "rag-movie-recommendation",
+  "version": "1.0.0",
+  "description": "## Overview This is a **React-based Movie Recommendation App** that allows users to **browse, search, and filter movies** based on their preferences. The app features a **modern UI** with a **recommended movies section, category selection, and popular movies**.",
+  "main": "index.js",
+  "scripts": {
+  "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+  "start-frontend": "cd movie-rag-frontend && npm start",
+  "start-backend": "cd movie-rag-backend && npm run dev"
+}
+,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

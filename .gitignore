@@ -1,2 +1,5 @@
 .env
 movie-rag-frontend/node_modules
+Datasets
+movie-rag-frontend/.next
+node_modules
