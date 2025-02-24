@@ -1,14 +1,7 @@
 import React from "react";
 
-function SearchBar({ setSearchTerm }) {
-  return (
-    <input
-      type="text"
-      placeholder="Search movies..."
-      onChange={(e) => setSearchTerm(e.target.value)}
-      className="search-bar"
-    />
-  );
+function SearchBar() {
+  return <input type="text" className="search-bar" placeholder="Search Movies..." />;
 }
 
 export default SearchBar;

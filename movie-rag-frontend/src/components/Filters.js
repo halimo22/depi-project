@@ -14,12 +14,10 @@ function Filters({ setFilters }) {
 
   return (
     <div>
-      {/* Filter Button with Icon */}
       <button className="filter-button" onClick={() => setShowModal(true)}>
-        <img src="/filter-icon.png" alt="Filter" className="filter-icon" />
+        Filters & Sort
       </button>
 
-      {/* Filter Modal */}
       {showModal && (
         <div className="modal-overlay">
           <div className="modal">

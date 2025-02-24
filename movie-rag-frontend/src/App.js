@@ -3,57 +3,66 @@ import SearchBar from "./components/SearchBar";
 import Filters from "./components/Filters";
 import MovieList from "./components/MovieList";
 import CategoryList from "./components/CategoryList";
-import RecommendedMovies from "./components/RecommendedMovies";
 import "./styles.css";
 
-const moviesData = [
-  { id: 1, title: "Inception", genre: "Sci-Fi", year: 2010, length: "long", rating: 8.8, image: "https://via.placeholder.com/300x400" },
-  { id: 2, title: "Titanic", genre: "Romance", year: 1997, length: "long", rating: 7.8, image: "https://via.placeholder.com/300x400" },
-  { id: 3, title: "The Dark Knight", genre: "Action", year: 2008, length: "long", rating: 9.0, image: "https://via.placeholder.com/300x400" },
-  { id: 4, title: "Dune", genre: "Sci-Fi", year: 2021, length: "long", rating: 8.5, image: "https://via.placeholder.com/300x400" }
+const recommendedMovies = [
+  { id: 1, title: "Movie 1", image: "movie1.jpg", category: "Action" },
+  { id: 2, title: "Movie 2", image: "movie2.jpg", category: "Sci-Fi" },
+  { id: 3, title: "Movie 3", image: "movie3.jpg", category: "Romance" },
 ];
 
-const recommendedMovies = [
-  { id: 5, title: "Interstellar", genre: "Sci-Fi", year: 2014, length: "long", rating: 8.6, image: "https://via.placeholder.com/300x400" },
-  { id: 6, title: "Avatar", genre: "Sci-Fi", year: 2009, length: "long", rating: 7.9, image: "https://via.placeholder.com/300x400" }
+const categories = [
+  { id: 1, name: "Category 1", image: "category1.jpg" },
+  { id: 2, name: "Category 2", image: "category2.jpg" },
+  { id: 3, name: "Category 3", image: "category3.jpg" },
+  { id: 4, name: "Category 4", image: "category4.jpg" },
+];
+
+const popularMovies = [
+  { id: 4, title: "Movie 4", image: "movie4.jpg", category: "Action" },
+  { id: 5, title: "Movie 5", image: "movie5.jpg", category: "Drama" },
+  { id: 6, title: "Movie 6", image: "movie6.jpg", category: "Horror" },
 ];
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({ category: "", releasePeriod: "all", length: "", sortBy: "title" });
 
-  const filteredMovies = moviesData
-    .filter((movie) =>
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filters.category === "" || movie.genre === filters.category) &&
-      (filters.length === "" || movie.length === filters.length) &&
-      (filters.releasePeriod === "10" ? movie.year >= 2014 :
-       filters.releasePeriod === "20" ? movie.year >= 2004 : true)
-    )
-    .sort((a, b) => {
-      if (filters.sortBy === "title") return a.title.localeCompare(b.title);
-      if (filters.sortBy === "year") return b.year - a.year;
-      if (filters.sortBy === "rating") return b.rating - a.rating;
-      return 0;
-    });
+  const filteredMovies = popularMovies.filter((movie) =>
+    filters.category ? movie.category === filters.category : true
+  );
 
   return (
     <div className="app">
-      {/* Logo & Search Bar */}
+      {/* Search Bar & Filter Button */}
       <header className="header">
-        <img src="/logo.png" alt="Movie App Logo" className="logo" />
-        <SearchBar setSearchTerm={setSearchTerm} />
+        <SearchBar />
         <Filters setFilters={setFilters} />
       </header>
 
-      {/* Categories Section */}
-      <CategoryList />
+      {/* Recommended Movies */}
+      <section className="movie-section">
+        <h2>Recommended for You</h2>
+        <MovieList movies={recommendedMovies} />
+      </section>
 
-      {/* Recommended Movies Section */}
-      <RecommendedMovies movies={recommendedMovies} />
+      {/* Categories */}
+      <section className="category-section">
+        <h2>Categories</h2>
+        <CategoryList categories={categories} />
+      </section>
 
-      {/* Main Movie List */}
-      <MovieList movies={filteredMovies} />
+      {/* Popular Movies */}
+      <section className="movie-section">
+        <h2>Popular Movies</h2>
+        <MovieList movies={filteredMovies} />
+      </section>
+
+      {/* Bottom Navigation */}
+      <nav className="bottom-nav">
+        <button>Home</button>
+        <button>Browse</button>
+        <button>Profile</button>
+      </nav>
     </div>
   );
 }
